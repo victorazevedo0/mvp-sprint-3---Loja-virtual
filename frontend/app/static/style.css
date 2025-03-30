@@ -1,0 +1,72 @@
+body {
+    padding-bottom: 50px;
+}
+
+.card {
+    transition: all 0.3s ease;
+    height: 100%;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+.product-img {
+    height: 200px;
+    object-fit: contain;
+    padding: 20px;
+}
+
+.cart-item {
+    border-bottom: 1px solid #eee;
+    padding: 10px 0;
+}
+
+#adminSection {
+    background-color: #f8f9fa;
+    border-radius: 8px;
+}
+
+.offcanvas-header {
+    border-bottom: 1px solid #dee2e6;
+}
+
+#cartBadge {
+    font-size: 0.7rem;
+    min-width: 18px;
+    height: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position:relative;
+    top: -5px;
+    right: -5px;
+}
+
+/* Alertas responsivos */
+.alert {
+    transition: all 0.3s ease;
+}
+
+@media (max-width: 576px) {
+    .alert {
+        right: 10px !important;
+        left: 10px !important;
+        bottom: 10px !important;
+        max-width: calc(100% - 20px) !important;
+    }
+}
+
+/* Animações do alerta */
+.fade {
+    transition: opacity 0.15s linear;
+}
+
+.show {
+    opacity: 1;
+}
+
+.fade:not(.show) {
+    opacity: 0;
+}
