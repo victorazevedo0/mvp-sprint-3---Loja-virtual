@@ -22,16 +22,21 @@
     <!-- Navbar Fixa no Topo -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
         <div class="container">
-            <a class="navbar-brand" href="#">Sprint Shop - Ecommerce</a>
-            <div class="d-flex align-items-center">
-                <input type="text" id="searchInput" class="form-control me-2" placeholder="Buscar produto...">
-                <button class="btn btn-outline-light position-relative" data-bs-toggle="offcanvas" data-bs-target="#cartOffcanvas">
-                    <i class="bi bi-cart3"></i>
-                    <span id="cartBadge" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" style="display: none;">0</span>
-                </button>
-            </div>
+          <a class="navbar-brand" href="#">Sprint Shop - Ecommerce</a>
+          
+          <div class="d-flex align-items-center">
+            <input type="text" id="searchInput" class="form-control me-2" placeholder="Buscar produto...">
+      
+            <button class="btn btn-outline-light position-relative me-2" data-bs-toggle="offcanvas" data-bs-target="#cartOffcanvas">
+              <i class="bi bi-cart3"></i>
+              <span id="cartBadge" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" style="display: none;">0</span>
+            </button>
+      
+            <!-- Botão para Gerenciador de Pedidos -->
+            <a href="order_manager" class="btn btn-outline-light ms-3">Gerenciar Pedidos</a>
+          </div>
         </div>
-    </nav>
+      </nav>
 
     <!-- Conteúdo Principal -->
     <div class="container mt-5 pt-3">

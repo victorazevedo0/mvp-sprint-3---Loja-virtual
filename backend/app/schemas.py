@@ -1,6 +1,7 @@
 from pydantic import BaseModel
 from datetime import datetime
 from typing import List, Optional
+from enum import Enum
 
 class ProductBase(BaseModel):
     title: str
@@ -36,6 +37,13 @@ class OrderBase(BaseModel):
     total: float
     customer_email: str
     status: str = "PENDING"
+    
+class OrderStatus(str, Enum): 
+    PENDING = "PENDENTE" 
+    PROCESSING = "PROCESSANDO" 
+    SHIPPED = "ENTREGUE" 
+    DELIVERED = "ENVIADO" 
+    CANCELLED = "CANCELADO"
 
 class OrderCreate(OrderBase):
     pass

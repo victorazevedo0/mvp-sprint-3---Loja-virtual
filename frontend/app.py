@@ -22,3 +22,7 @@ templates = Jinja2Templates(directory=templates_dir)
 @app.get("/")
 async def read_root(request: Request):
     return templates.TemplateResponse("index.html", {"request": request})
+
+@app.get("/order_manager", response_class=HTMLResponse)
+async def read_order_manager(request: Request):
+    return templates.TemplateResponse("order_manager.html", {"request": request})

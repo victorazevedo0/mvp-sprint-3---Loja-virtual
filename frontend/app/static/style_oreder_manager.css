@@ -1,0 +1,15 @@
+body {
+  padding-top: 70px;
+}
+
+.table th, .table td {
+  vertical-align: middle;
+}
+
+.modal-title {
+  font-weight: bold;
+}
+
+#pagination {
+  margin-top: 1rem;
+}

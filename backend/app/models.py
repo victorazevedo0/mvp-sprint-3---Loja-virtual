@@ -8,11 +8,11 @@ from enum import Enum as PyEnum
 
 # Enum para status do pedido (opcional, mas recomendado)
 class OrderStatus(str, PyEnum):
-    PENDING = "PENDING"
-    PROCESSING = "PROCESSING"
-    SHIPPED = "SHIPPED"
-    DELIVERED = "DELIVERED"
-    CANCELLED = "CANCELLED"
+    PENDING = "PENDENTE" 
+    PROCESSING = "PROCESSANDO" 
+    SHIPPED = "ENTREGUE" 
+    DELIVERED = "ENVIADO" 
+    CANCELLED = "CANCELADO"
 
 class Product(Base):
     __tablename__ = "products"

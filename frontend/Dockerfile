@@ -8,6 +8,7 @@ RUN pip install fastapi uvicorn jinja2
 # Copiar aplicação
 COPY app.py /app/
 COPY app/index.html /app/templates/
+COPY app/order_manager.html /app/templates/
 COPY app/static/ /app/static/
 
 EXPOSE 3000

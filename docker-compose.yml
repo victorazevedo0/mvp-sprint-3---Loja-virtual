@@ -13,5 +13,6 @@ services:
     volumes:
       - ./frontend/app/static:/app/static
       - ./frontend/app/index.html:/app/index.html
+      - ./frontend/app/order_manager.html:/app/order_manager.html
     depends_on:
       - backend

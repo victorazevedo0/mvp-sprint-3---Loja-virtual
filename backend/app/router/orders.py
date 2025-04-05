@@ -6,13 +6,14 @@ from pydantic import BaseModel, Field
 from ..database import get_db
 from .. import models, schemas
 from fastapi.routing import APIRoute
+from ..models import OrderStatus
 
 class CustomAPIRoute(APIRoute):
     def get_operation_id(self, route: "APIRoute") -> str:
         return f"{self.tags[0]}_{self.name}" if self.tags else self.name
 
 router = APIRouter(
-    prefix="/api/v1/orders",
+    prefix="/orders",
     tags=["orders"],
     route_class=CustomAPIRoute,
     redirect_slashes=False
@@ -35,7 +36,7 @@ class OrderCreate(BaseModel):
         pattern=r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$",
         example="cliente@exemplo.com"
     )
-    status: str = Field(default="PENDING", example="PENDING")
+    status: OrderStatus = Field(default=OrderStatus.PENDING, example="PENDENTE")
 
     class Config:
         from_attributes = True

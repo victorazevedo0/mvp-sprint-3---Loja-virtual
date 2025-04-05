@@ -1,7 +1,7 @@
 // Constante para a URL do backend
 const BACKEND_URL = window.location.hostname === 'localhost' 
-    ? 'http://localhost:8000/api/v1/api/v1/orders' 
-    : 'http://backend:8000/api/v1/api/v1/orders';
+    ? 'http://localhost:8000/api/v1/orders' 
+    : 'http://backend:8000/api/v1/orders';
 
 // Variável do carrinho
 let cart = JSON.parse(localStorage.getItem('cart')) || [];
@@ -174,7 +174,7 @@ async function checkout() {
             })),
             total: cart.reduce((sum, item) => sum + (item.price * item.quantity), 0),
             customer_email: "cliente@exemplo.com",
-            status: "PENDING"
+            status: "PENDENTE"
         };
 
         // Chamada corrigida - usando a URL base diretamente
