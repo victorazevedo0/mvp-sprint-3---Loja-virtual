@@ -41,7 +41,6 @@ async function loadOrders() {
     }
 }
 
-// Aplica filtros apenas localmente (usado em input e select)
 function applyFiltersLocal() {
     currentPage = 1;
     renderPage();
@@ -72,17 +71,7 @@ function getFilteredOrders() {
         (!status || status === "TODOS" || order.status === status)
     );
 }
-// function getFilteredOrders() {
-//     const email = filterEmail?.value.toLowerCase() || "";
-//     const status = filterStatus?.value || "";
 
-//     return allOrders.filter(order =>
-//         order.customer_email.toLowerCase().includes(email) &&
-//         (status === "" || order.status === status)
-//     );
-// }
-
-// Renderiza a página atual com pedidos paginados
 function renderPage() {
     const filtered = getFilteredOrders();
     const start = (currentPage - 1) * ordersPerPage;
@@ -92,7 +81,6 @@ function renderPage() {
     renderPagination(filtered.length);
 }
 
-// Cria botões de paginação
 function renderPagination(totalItems) {
     paginationContainer.innerHTML = '';
     const totalPages = Math.ceil(totalItems / ordersPerPage);
@@ -172,7 +160,7 @@ form?.addEventListener('submit', async (e) => {
 
     const payload = {
         customer_email: formFields.email.value,
-        status: formFields.status.value.toUpperCase(),  // <-- Aqui garantimos o valor correto
+        status: formFields.status.value.toUpperCase(),
         total: parseFloat(formFields.total.value),
         items: itemsParsed
     };

@@ -3,10 +3,9 @@ const BACKEND_URL = window.location.hostname === 'localhost'
     ? 'http://localhost:8000/api/v1/orders' 
     : 'http://backend:8000/api/v1/orders';
 
-// Variável do carrinho
+
 let cart = JSON.parse(localStorage.getItem('cart')) || [];
 
-// 1. Função para verificar elementos de forma segura
 function getElementSafe(id) {
     const element = document.getElementById(id);
     if (!element) {
@@ -120,19 +119,29 @@ function updateCartUI() {
     // Atualizar total
     totalElement.textContent = `R$ ${total.toFixed(2)}`;
 }
+    
+let isAdding = false;
 
 async function addToCart(productId) {
+    if (isAdding) return;
+    isAdding = true;
+
     try {
         const response = await fetch(`https://fakestoreapi.com/products/${productId}`);
         const product = await response.json();
-        
-        const existingItem = cart.find(item => item.product_id === product.id);
-        
+
+        // Recarrega sempre o carrinho
+        cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+        console.log('Carrinho atual:', cart);
+        console.log('Tentando adicionar:', product.id);
+
+        const existingItem = cart.find(item => item.id === product.id);
+
         if (existingItem) {
             existingItem.quantity++;
         } else {
             cart.push({
-                product_id: product.id,
                 id: product.id,
                 title: product.title,
                 price: product.price,
@@ -140,22 +149,25 @@ async function addToCart(productId) {
                 quantity: 1
             });
         }
-        
+
         localStorage.setItem('cart', JSON.stringify(cart));
         updateCartUI();
         showAlert(`${product.title} adicionado ao carrinho!`, 'success');
     } catch (error) {
         console.error('Erro ao adicionar ao carrinho:', error);
         showAlert('Erro ao adicionar produto', 'danger');
+    } finally {
+        isAdding = false;
     }
 }
 
 function removeFromCart(productId) {
-    cart = cart.filter(item => item.product_id !== productId && item.id !== productId);
+    cart = cart.filter(item => item.id !== productId);
     localStorage.setItem('cart', JSON.stringify(cart));
     updateCartUI();
     showAlert('Produto removido do carrinho', 'warning');
 }
+
 
 // 4. Função de Checkout
 async function checkout() {
@@ -177,7 +189,6 @@ async function checkout() {
             status: "PENDENTE"
         };
 
-        // Chamada corrigida - usando a URL base diretamente
         const response = await fetch(BACKEND_URL, {
             method: 'POST',
             headers: {
@@ -253,19 +264,28 @@ function showAlert(message, type) {
 // 6. Inicialização
 function init() {
     // Configura event listeners
-    document.addEventListener('click', function(e) {
-        if (e.target.classList.contains('add-to-cart')) {
-            const productId = e.target.getAttribute('data-id');
+    document.addEventListener('click', function (e) {
+        const target = e.target;
+    
+        // Botão de adicionar ao carrinho
+        if (target.matches('.add-to-cart')) {
+            const productId = target.getAttribute('data-id');
             addToCart(parseInt(productId));
             return;
         }
-        
-        const removeBtn = e.target.closest('.remove-from-cart');
+    
+        // Botão de remover do carrinho
+        const removeBtn = target.closest('.remove-from-cart');
         if (removeBtn) {
+            e.preventDefault();
+            e.stopPropagation();
+            e.stopImmediatePropagation();
             const productId = removeBtn.getAttribute('data-id');
-            if (productId) removeFromCart(parseInt(productId));
+            if (productId) {
+                removeFromCart(parseInt(productId));
+            }
         }
-    });
+    });    
 
     // Configura botão de checkout
     const checkoutButton = getElementSafe('checkoutButton');

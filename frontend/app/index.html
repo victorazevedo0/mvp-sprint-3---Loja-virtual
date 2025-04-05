@@ -4,43 +4,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sprint Shop - Ecommerce</title>
-    <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Bootstrap Icons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
-    <!-- Nosso CSS -->
-    <link href="/static/style.css" rel="stylesheet">
-    <style>
-        /* Estilos temporários para visualização */
-        body { padding-top: 56px; }
-        .card-img-top { height: 200px; object-fit: contain; }
-        .offcanvas-body { display: flex; flex-direction: column; }
-        #cartItems { flex-grow: 1; overflow-y: auto; }
-    </style>
+    <link href="static/style.css" rel="stylesheet">
 </head>
 <body class="bg-light">
-    <!-- Navbar Fixa no Topo -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
         <div class="container">
           <a class="navbar-brand" href="#">Sprint Shop - Ecommerce</a>
-          
+          <a href="order_manager" class="btn btn-outline-light ms-3">Gerenciar Pedidos</a>
           <div class="d-flex align-items-center">
             <input type="text" id="searchInput" class="form-control me-2" placeholder="Buscar produto...">
-      
             <button class="btn btn-outline-light position-relative me-2" data-bs-toggle="offcanvas" data-bs-target="#cartOffcanvas">
               <i class="bi bi-cart3"></i>
               <span id="cartBadge" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" style="display: none;">0</span>
-            </button>
-      
-            <!-- Botão para Gerenciador de Pedidos -->
-            <a href="order_manager" class="btn btn-outline-light ms-3">Gerenciar Pedidos</a>
+            </button>     
           </div>
         </div>
       </nav>
 
-    <!-- Conteúdo Principal -->
     <div class="container mt-5 pt-3">
-        <!-- Filtro de Categoria -->
         <div class="row mb-4">
             <div class="col-md-3">
                 <select id="categoryFilter" class="form-select">
@@ -53,9 +36,7 @@
             </div>
         </div>
 
-        <!-- Lista de Produtos -->
         <div class="row g-4" id="products">
-            <!-- Produtos serão carregados aqui via JavaScript -->
             <div class="col-12 text-center py-5">
                 <div class="spinner-border text-primary" role="status">
                     <span class="visually-hidden">Carregando...</span>
@@ -65,7 +46,6 @@
         </div>
     </div>
 
-    <!-- Carrinho (Offcanvas) -->
     <div class="offcanvas offcanvas-end" tabindex="-1" id="cartOffcanvas" aria-labelledby="cartOffcanvasLabel">
         <div class="offcanvas-header">
             <h5 class="offcanvas-title" id="cartOffcanvasLabel">Seu Carrinho</h5>
@@ -85,12 +65,9 @@
         </div>
     </div>
 
-    <!-- Bootstrap Bundle com Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <!-- Nosso JavaScript -->
     <script src="static/script.js"></script>
     
-    <!-- Inicialização Garantida -->
     <script>
         // Verifica se o script.js carregou corretamente
         function checkScriptLoaded() {

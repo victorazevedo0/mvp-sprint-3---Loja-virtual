@@ -6,7 +6,6 @@ import os
 
 app = FastAPI()
 
-# Configurar caminhos absolutos
 app_dir = os.path.dirname(os.path.abspath(__file__))
 static_dir = os.path.join(app_dir, "static")
 templates_dir = os.path.join(app_dir, "templates")

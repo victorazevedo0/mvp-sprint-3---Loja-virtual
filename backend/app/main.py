@@ -35,7 +35,7 @@ def read_root():
 # Configuração CORS
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # Em produção, substitua por seus domínios específicos
+    allow_origins=["*"],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],

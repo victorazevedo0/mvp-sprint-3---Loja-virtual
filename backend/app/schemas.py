@@ -13,7 +13,7 @@ class ProductBase(BaseModel):
     rating_count: Optional[int] = None
 
     class Config:
-        from_attributes = True  # Substitui o orm_mode=True do Pydantic V1
+        from_attributes = True
 
 class ProductCreate(ProductBase):
     pass
