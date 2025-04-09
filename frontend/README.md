@@ -10,12 +10,13 @@ A interface é desenvolvida em **HTML, CSS (Bootstrap)** e **JavaScript**, consu
 
 A arquitetura da aplicação foi baseada na separação de responsabilidades entre frontend e backend. O frontend é responsável por:
 
-- Exibir produtos vindos da API externa (FakeStore API);
+- Exibir produtos vindos da API externa (Fake Store API);
 - Enviar pedidos para o backend;
 - Consultar, editar e excluir pedidos já realizados por meio da API local.
 
 ### 🔁 Fluxo de Funcionamento
 
+![imagem_fluxograma_projeto](./img/Fluxograma%20Software.jpg)
 ---
 
 ## ⚙️ Instalação e Uso
@@ -67,7 +68,7 @@ Obs: **Certifique-se de que o backend (FastAPI) está rodando. (como informando 
 
     HTML5
     CSS3 (Bootstrap 5)
-    JavaScript (vanilla)
+    JavaScript
     FastAPI (backend - API)
     FakeStore API (catálogo de produtos)
 

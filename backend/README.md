@@ -62,7 +62,6 @@ cd mvp-sprint-3---Loja-virtual/backend
 
 ## 🐳 2. Rodando com Docker
 
-Caso prefira usar Docker para rodar o backend:
 📌 Pré-requisitos
 
 Instale o Docker de acordo com seu sistema operacional:
@@ -108,7 +107,7 @@ Obs: O projeto está com propensão de crescer, com cadastro de produtos, client
 
 A arquitetura segue o padrão MVC e comunicação via REST:
 
-        Frontend (Html 5, Css3, Bootstrap e JS)
+        Frontend (Html 5, Css3 Bootstrap e JS)
                │
                ▼
         FastAPI (Backend)
